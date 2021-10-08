@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AttendanceFragment">
+
+   <TextView
+       android:id="@+id/text_daily"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/logo_color"
+       android:textSize="24sp"
+       android:layout_marginTop="25dp"
+       android:layout_centerHorizontal="true"
+       android:fontFamily="@font/poppins_extra_bold"
+       android:text="Daily"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/text_daily"
+        android:background="@drawable/rectangle_radius_corner_color">
+
+        <TextView
+            android:id="@+id/text_date_and_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="30 Sep 2021, 05:28 PM"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="55dp"
+            android:layout_below="@+id/text_date_and_time"
+            android:background="@drawable/rectangle_radius_white">
+
+            <TextView
+                android:id="@+id/text_checkIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppins_extra_bold"
+                android:text="Check In"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

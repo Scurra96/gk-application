@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="25dp"
+        android:elevation="25dp"
+        android:clipToPadding="false"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/rectangle_radius_corner_color">
+
+        <TextView
+            android:id="@+id/textView_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/color_white"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:text="Hi, James your check in Successfully, visit site location"
+            />
+
+        <RelativeLayout
+            android:layout_width="87dp"
+            android:layout_height="34dp"
+            android:elevation="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/textView_confirm"
+            android:background="@drawable/rectangle_radius_white_20x"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Okay"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppins_extra_bold"
+                android:textColor="@color/color_black"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

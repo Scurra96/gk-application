@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ProfileFragment">
+
+    <RelativeLayout
+        android:id="@+id/parentRelative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp">
+
+        <ImageView
+            android:id="@+id/imageView_arrow"
+            android:layout_width="24sp"
+            android:layout_height="24sp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_baseline_arrow_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_marginStart="-5dp"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:layout_toEndOf="@+id/imageView_arrow"
+            android:textSize="18sp"
+            android:textColor="@color/color_black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/imageView_firstLetter"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:elevation="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/parentRelative"
+        android:background="@drawable/circle_round_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/logo_color"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="J" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageView_firstLetter"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/logo_color"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/nav_header_title" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:textColor="@color/color_black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/nav_header_subtitle" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/linearLayout_content"
+        android:background="@drawable/rectangle_radius_corner_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DOB"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@android:color/transparent"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_grey_lite"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_mobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@android:color/transparent"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_grey_lite"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="45dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/color_black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@android:color/transparent"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_grey_lite"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
