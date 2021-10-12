@@ -12,7 +12,7 @@
        android:layout_height="wrap_content"
        android:textColor="@color/logo_color"
        android:textSize="24sp"
-       android:layout_marginTop="25dp"
+       android:layout_marginTop="150dp"
        android:layout_centerHorizontal="true"
        android:fontFamily="@font/poppins_extra_bold"
        android:text="Daily"/>
@@ -30,14 +30,15 @@
             android:id="@+id/text_date_and_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="30 Sep 2021, 05:28 PM"/>
+            android:text="30 Sep 2021, 05:28 PM"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <RelativeLayout
+            android:id="@+id/relative_checkIn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"

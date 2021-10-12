@@ -2,15 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="50dp"
         android:elevation="25dp"
+        android:layout_centerInParent="true"
         android:background="@drawable/rectangle_radius_corner_white">
 
         <TextView
@@ -42,11 +44,14 @@
                 android:fontFamily="@font/poppins_semi_bold"/>
 
             <EditText
+                android:id="@+id/editText_siteName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:fontFamily="@font/poppins_bold"
-                android:background="@android:color/transparent"/>
+                android:textColor="@color/color_black"
+                android:layout_marginBottom="5dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_bold"/>
 
             <View
                 android:layout_width="match_parent"
@@ -73,9 +78,12 @@
                 android:fontFamily="@font/poppins_semi_bold"/>
 
             <EditText
+                android:id="@+id/editText_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:textColor="@color/color_black"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins_bold"
                 android:background="@android:color/transparent"/>
 

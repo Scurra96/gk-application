@@ -3,23 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.2853717026378897" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_arrow_back_red.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/circle_round_white.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/rectangle_radius_corner_white.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/rectangle_radius_white.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/rectangle_radius_white_20x.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/layout/activity_admin_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.10238534068541638" />
         <entry key="app/src/main/res/layout/activity_list_of_site.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/activity_site_location.xml" value="0.32263478553094355" />
         <entry key="app/src/main/res/layout/activity_site_location2.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/content_home.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/fragment_attendance.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/layout_card_list_of_site.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/layout_card_user_profile.xml" value="0.12530940183247138" />
         <entry key="app/src/main/res/layout/layout_confirm.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/layout_site_location.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/layout_site_location.xml" value="0.28650725992252546" />
+        <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.246875" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.246875" />
+        <entry key="app/src/main/res/menu/home.xml" value="0.246875" />
       </map>
     </option>
   </component>
