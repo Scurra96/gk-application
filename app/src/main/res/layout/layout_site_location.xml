@@ -108,6 +108,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout_yes"
                 android:layout_width="108dp"
                 android:layout_height="40dp"
                 android:elevation="5dp"
@@ -126,6 +127,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/relativeLayout_no"
                 android:layout_width="108dp"
                 android:layout_height="40dp"
                 android:elevation="5dp"

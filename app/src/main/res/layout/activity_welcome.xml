@@ -37,6 +37,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_createLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
@@ -48,6 +49,7 @@
             android:background="@drawable/rectangle_radius_corner"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_signIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"

@@ -11,7 +11,6 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="20dp"
-        android:visibility="invisible"
         android:layout_marginStart="20dp"
         android:src="@drawable/logo"
         android:contentDescription="@string/todo" />
@@ -47,6 +46,7 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -64,6 +64,7 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -81,6 +82,7 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_mailID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -98,6 +100,7 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_mobileNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -115,6 +118,7 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -134,6 +138,7 @@
             app:passwordToggleDrawable="@drawable/ic_baseline_visibility_off">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
@@ -155,6 +160,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_radius_corner"
@@ -165,6 +171,7 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/textViewLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extra_bold"

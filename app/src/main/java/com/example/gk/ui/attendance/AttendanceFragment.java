@@ -1,14 +1,5 @@
 package com.example.gk.ui.attendance;
 
-import static androidx.constraintlayout.motion.widget.Debug.getLocation;
-
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,40 +10,41 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.gk.R;
+import com.example.gk.model.SiteLocationModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class AttendanceFragment extends Fragment {
 
-    TextView text_date_and_time;
-    RelativeLayout relative_checkIn;
-    EditText editText_siteName,editText_location;
-    Location gps_loc;
-    Location network_loc;
-    Location final_loc;
-    double longitude;
-    double latitude;
-    String userCountry, userAddress;
+    TextView text_date_and_time,text_checkIn,textView_confirm;
+    RelativeLayout relative_checkIn,relative_checkOut;
+    EditText editText_siteName, editText_location;
+    RelativeLayout relativeLayout_yes,relativeLayout_no,relativeLayout_Okay;
+    DatabaseReference databaseReference;
+    String username,dateAndTime,siteLocation,siteName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_attendance, container, false);
 
         text_date_and_time = root.findViewById(R.id.text_date_and_time);
         relative_checkIn = root.findViewById(R.id.relative_checkIn);
+        relative_checkOut = root.findViewById(R.id.relative_checkOut);
+        text_checkIn = root.findViewById(R.id.text_checkIn);
 
-        Calendar c = Calendar.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("SiteLocation");
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm aa",
                 Locale.getDefault());
         String formatDate_time = dateFormat.format(new Date());
@@ -61,6 +53,8 @@ public class AttendanceFragment extends Fragment {
         relative_checkIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                relative_checkIn.setVisibility(View.GONE);
+                relative_checkOut.setVisibility(View.VISIBLE);
                 View popupView = LayoutInflater.from(getActivity()).inflate(
                         R.layout.layout_site_location, null);
                 final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
@@ -71,8 +65,26 @@ public class AttendanceFragment extends Fragment {
 
                 editText_siteName = popupView.findViewById(R.id.editText_siteName);
                 editText_location = popupView.findViewById(R.id.editText_location);
+                relativeLayout_yes = popupView.findViewById(R.id.relativeLayout_yes);
+                relativeLayout_no = popupView.findViewById(R.id.relativeLayout_no);
 
-                getCurrentLocation(editText_location);
+                relativeLayout_yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addUserDataYes();
+                        Toast.makeText(requireActivity(), "Yes", Toast.LENGTH_SHORT).show();
+                        popupWindow.dismiss();
+                    }
+                });
+
+                relativeLayout_no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addUserDataNo();
+                        Toast.makeText(requireActivity(), "No", Toast.LENGTH_SHORT).show();
+                        popupWindow.dismiss();
+                    }
+                });
 
             }
         });
@@ -80,68 +92,62 @@ public class AttendanceFragment extends Fragment {
         return root;
     }
 
-    private void getCurrentLocation(EditText editText_location) {
+    private void addUserDataNo() {
+        username = text_date_and_time.getText().toString();
+        dateAndTime = text_date_and_time.getText().toString();
+        siteName = editText_siteName.getText().toString();
+        siteLocation = editText_location.getText().toString();
+        SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
+                siteLocation,"Check In");
+        databaseReference.push().setValue(siteLocationModel);
 
-        LocationManager locationManager = (LocationManager)requireActivity()
-                .getSystemService(Context.LOCATION_SERVICE);
+        View popupView = LayoutInflater.from(getActivity()).inflate(
+                R.layout.layout_confirm, null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
+                LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        popupWindow.setFocusable(true);
+        popupWindow.update();
 
-        if (ActivityCompat.checkSelfPermission(requireActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(requireActivity(),
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(requireActivity(),
-                Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
-
-            return;
-        }
-
-        try {
-
-            gps_loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            network_loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (gps_loc != null) {
-            final_loc = gps_loc;
-            latitude = final_loc.getLatitude();
-            longitude = final_loc.getLongitude();
-        }
-        else if (network_loc != null) {
-            final_loc = network_loc;
-            latitude = final_loc.getLatitude();
-            longitude = final_loc.getLongitude();
-        }
-        else {
-            latitude = 0.0;
-            longitude = 0.0;
-        }
-
-
-        ActivityCompat.requestPermissions(requireActivity(), new String[]
-                {Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_NETWORK_STATE}, 1);
-
-        try {
-
-            Geocoder geocoder = new Geocoder(requireActivity(), Locale.getDefault());
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            if (addresses != null && addresses.size() > 0) {
-                userCountry = addresses.get(0).getCountryName();
-                userAddress = addresses.get(0).getAddressLine(0);
-                editText_location.setText(userCountry + ", " + userAddress);
+        relativeLayout_Okay = popupView.findViewById(R.id.relativeLayout_Okay);
+        textView_confirm = popupView.findViewById(R.id.textView_confirm);
+        relativeLayout_Okay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
             }
-            else {
-                userCountry = "Unknown";
-                editText_location.setText(userCountry);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 
+    private void addUserDataYes() {
+
+        username = text_date_and_time.getText().toString();
+        dateAndTime = text_date_and_time.getText().toString();
+        siteName = editText_siteName.getText().toString();
+        siteLocation = editText_location.getText().toString();
+        SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
+                siteLocation,"Check In");
+        databaseReference.push().setValue(siteLocationModel);
+
+        View popupView = LayoutInflater.from(getActivity()).inflate(
+                R.layout.layout_confirm, null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
+                LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        popupWindow.setFocusable(true);
+        popupWindow.update();
+
+        relativeLayout_Okay = popupView.findViewById(R.id.relativeLayout_Okay);
+        relativeLayout_Okay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+
+
+
+
+    }
 }
