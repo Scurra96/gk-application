@@ -1,16 +1,101 @@
 package com.example.gk.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.gk.R;
+import com.example.gk.adapter.SiteLocationAdapter;
+import com.example.gk.adapter.UserProfileAdapter;
+import com.example.gk.model.RegisteredModel;
+import com.example.gk.model.SiteLocationModel;
+import com.example.gk.model.SiteModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    @Override
+    RecyclerView recyclerView_siteLocation,recyclerView_userProfile;
+    TextView textView_viewAll;
+    DatabaseReference databaseReference;
+    ArrayList<SiteModel> siteModels;
+    ArrayList<RegisteredModel> registeredModels;
+    SiteLocationAdapter siteLocationAdapter;
+    UserProfileAdapter userProfileAdapter;
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home);
-    }
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_admin_home);
+
+            siteModels = new ArrayList<>();
+            registeredModels = new ArrayList<>();
+
+        recyclerView_siteLocation = findViewById(R.id.recyclerView_siteLocation);
+        recyclerView_siteLocation.setHasFixedSize(true);
+        recyclerView_siteLocation.setLayoutManager(new
+                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("SiteLocation");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                siteModels.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    SiteModel siteModel = dataSnapshot.getValue(SiteModel.class);
+                    siteModels.add(siteModel);
+                }
+                siteLocationAdapter = new SiteLocationAdapter(getApplicationContext(),siteModels);
+                recyclerView_siteLocation.setAdapter(siteLocationAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        recyclerView_userProfile = findViewById(R.id.recyclerView_userProfile);
+        recyclerView_userProfile.setHasFixedSize(true);
+        recyclerView_userProfile.setLayoutManager(new LinearLayoutManager(this));
+        databaseReference = FirebaseDatabase.getInstance().getReference("RegisterDetails");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                registeredModels.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    RegisteredModel registeredModel = dataSnapshot.getValue(RegisteredModel.class);
+                    registeredModels.add(registeredModel);
+                }
+                userProfileAdapter = new UserProfileAdapter(getApplicationContext(),registeredModels);
+                recyclerView_userProfile.setAdapter(userProfileAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        textView_viewAll = findViewById(R.id.textView_viewAll);
+
+        textView_viewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ListOfSiteActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        }
 }

@@ -12,12 +12,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.gk.R;
 import com.example.gk.model.SiteLocationModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,6 +36,7 @@ public class AttendanceFragment extends Fragment {
     RelativeLayout relativeLayout_yes,relativeLayout_no,relativeLayout_Okay;
     DatabaseReference databaseReference;
     String username,dateAndTime,siteLocation,siteName;
+    long i=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +49,20 @@ public class AttendanceFragment extends Fragment {
         text_checkIn = root.findViewById(R.id.text_checkIn);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("SiteLocation");
+      /*  databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    i = (snapshot.getChildrenCount());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm aa",
                 Locale.getDefault());
@@ -128,7 +147,7 @@ public class AttendanceFragment extends Fragment {
         SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
                 siteLocation,"Check In");
         databaseReference.push().setValue(siteLocationModel);
-
+//        databaseReference.child(String.valueOf(i+1)).setValue(siteLocationModel);
         View popupView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.layout_confirm, null);
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
