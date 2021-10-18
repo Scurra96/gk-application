@@ -12,39 +12,41 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gk.R;
-import com.example.gk.admin.AdminHomeActivity;
 import com.example.gk.admin.SiteLocationActivity;
-import com.example.gk.model.SiteLocationModel;
 import com.example.gk.model.SiteModel;
 
 import java.util.ArrayList;
 
-public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapter.MyViewHolder> {
+public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<SiteModel> siteModels;
 
-    public SiteLocationAdapter(Context context, ArrayList<SiteModel> siteModels) {
+    public ListOfSitesAdapter(Context context, ArrayList<SiteModel> siteModels) {
         this.context = context;
         this.siteModels = siteModels;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.layout_card_site_location,
+    public ListOfSitesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.layout_card_list_of_site,
                 parent,false);
-        return new MyViewHolder(v);
+        return new ListOfSitesAdapter.MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListOfSitesAdapter.MyViewHolder holder, int position) {
         SiteModel siteModel = siteModels.get(position);
-        holder.textView_dateAndTime.setText(siteModel.getDateAndTime());
+        holder.textView_siteLocation.setText(siteModel.getSiteName());
+        holder.textView_siteLocation.setText(siteModel.getUsername());
         holder.textView_siteLocation.setText(siteModel.getSiteLocation());
-        holder.textView_username.setText(siteModel.getUsername());
+        holder.textView_siteLocation.setText(siteModel.getCheckIn_Out());
 
-        holder.relativeLayout_siteCard.setOnClickListener(new View.OnClickListener() {
+        char result = siteModel.getSiteName().charAt(0);
+        holder.textView_firstLetter.setText(String.valueOf(result));
+
+        holder.relativeLayout_siteList_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, SiteLocationActivity.class);
@@ -52,27 +54,24 @@ public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapte
                 i.putExtra("siteLocation",siteModel.getSiteLocation());
                 i.putExtra("siteLocationUsername",siteModel.getUsername());
                 i.putExtra("siteName",siteModel.getSiteName());
-                i.putExtra("uniqueID",siteModel.getCheckIn_Out());
                 context.startActivity(i);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return siteModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView_dateAndTime,textView_siteLocation,textView_username;
-        RelativeLayout relativeLayout_siteCard;
+        TextView textView_dateAndTime,textView_siteLocation,textView_username,textView_firstLetter;
+        RelativeLayout relativeLayout_siteList_card;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView_dateAndTime = itemView.findViewById(R.id.textView_dateAndTime);
             textView_siteLocation = itemView.findViewById(R.id.textView_siteLocation);
-            textView_username = itemView.findViewById(R.id.textView_username);
-            relativeLayout_siteCard = itemView.findViewById(R.id.relativeLayout_siteCard);
+            textView_firstLetter = itemView.findViewById(R.id.textView_firstLetter);
+            relativeLayout_siteList_card = itemView.findViewById(R.id.relativeLayout_siteList_card);
         }
     }
 }

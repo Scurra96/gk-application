@@ -6,6 +6,7 @@
     android:clipToPadding="false">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout_userProfile"
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_alignParentStart="true"
@@ -27,8 +28,8 @@
                 android:id="@+id/textView_firstLetter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="J"
                 android:textColor="@color/logo_color"

@@ -7,14 +7,16 @@ public class RegisterModel {
     String mobileNo;
     String address;
     String password;
+    String uniqueID;
 
-    public RegisterModel(String username, String dob, String emailID, String mobileNo, String address, String password) {
+    public RegisterModel(String username, String dob, String emailID, String mobileNo, String address, String password, String uniqueID) {
         this.username = username;
         this.dob = dob;
         this.emailID = emailID;
         this.mobileNo = mobileNo;
         this.address = address;
         this.password = password;
+        this.uniqueID = uniqueID;
     }
 
     public String getUsername() {
@@ -39,5 +41,10 @@ public class RegisterModel {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getUniqueID() {
+
+        return uniqueID;
     }
 }

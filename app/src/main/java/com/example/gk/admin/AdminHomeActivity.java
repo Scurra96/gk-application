@@ -2,10 +2,12 @@ package com.example.gk.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class AdminHomeActivity extends AppCompatActivity {
     ArrayList<RegisteredModel> registeredModels;
     SiteLocationAdapter siteLocationAdapter;
     UserProfileAdapter userProfileAdapter;
+    Toolbar toolbar_admin;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,11 @@ public class AdminHomeActivity extends AppCompatActivity {
 
             siteModels = new ArrayList<>();
             registeredModels = new ArrayList<>();
+
+            toolbar_admin = findViewById(R.id.toolbar_admin);
+            setSupportActionBar(toolbar_admin);
+            toolbar_admin.setTitleTextColor(Color.WHITE);
+            getSupportActionBar().setTitle("Home");
 
         recyclerView_siteLocation = findViewById(R.id.recyclerView_siteLocation);
         recyclerView_siteLocation.setHasFixedSize(true);
@@ -94,7 +102,6 @@ public class AdminHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ListOfSiteActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         }

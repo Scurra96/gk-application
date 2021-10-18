@@ -7,6 +7,11 @@ public class RegisteredModel {
     String mobileNo;
     String address;
     String password;
+    String uniqueID;
+
+    public String getUniqueID() {
+        return uniqueID;
+    }
 
     public String getUsername() {
         return username;

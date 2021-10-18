@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         editText_username = findViewById(R.id.editText_username);
         editText_password = findViewById(R.id.editText_password);
 
-         username = editText_username.getText().toString();
-         password = editText_password.getText().toString();
+//         username = editText_username.getText().toString();
+//         password = editText_password.getText().toString();
 
         button_Login = findViewById(R.id.button_Login);
         button_Login.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Intent i = new Intent(getApplicationContext(), HomeActivity.class);
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("USERNAME", username);
+                    editor.putString("USERNAME", editText_username.getText().toString());
                     editor.apply();
                     startActivity(i);
                     finish();

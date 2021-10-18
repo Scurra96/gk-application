@@ -1,5 +1,8 @@
 package com.example.gk.ui.attendance;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -49,20 +52,9 @@ public class AttendanceFragment extends Fragment {
         text_checkIn = root.findViewById(R.id.text_checkIn);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("SiteLocation");
-      /*  databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    i = (snapshot.getChildrenCount());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
+        SharedPreferences pref = requireActivity().getSharedPreferences(
+                "MyPref", MODE_PRIVATE);
+        username = pref.getString("USERNAME","");
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm aa",
                 Locale.getDefault());
@@ -112,7 +104,7 @@ public class AttendanceFragment extends Fragment {
     }
 
     private void addUserDataNo() {
-        username = text_date_and_time.getText().toString();
+//        username = text_date_and_time.getText().toString();
         dateAndTime = text_date_and_time.getText().toString();
         siteName = editText_siteName.getText().toString();
         siteLocation = editText_location.getText().toString();
@@ -140,14 +132,13 @@ public class AttendanceFragment extends Fragment {
 
     private void addUserDataYes() {
 
-        username = text_date_and_time.getText().toString();
+//        username = text_date_and_time.getText().toString();
         dateAndTime = text_date_and_time.getText().toString();
         siteName = editText_siteName.getText().toString();
         siteLocation = editText_location.getText().toString();
         SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
                 siteLocation,"Check In");
         databaseReference.push().setValue(siteLocationModel);
-//        databaseReference.child(String.valueOf(i+1)).setValue(siteLocationModel);
         View popupView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.layout_confirm, null);
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.

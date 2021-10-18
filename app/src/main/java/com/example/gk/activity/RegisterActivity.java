@@ -15,6 +15,9 @@ import com.example.gk.model.RegisterModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Random;
+import java.util.UUID;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText editText_username,editText_dob,editText_mailID,editText_mobileNumber,
@@ -22,7 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button buttonSignIn;
     TextView textViewLogin;
     DatabaseReference databaseReference;
-    String username,dob,mailID,mobileNumber,address,password;
+    String username,dob,mailID,mobileNumber,address,password,uniqueId;
+    private static final String ALLOWED_CHARACTERS ="0123456789qwertyuiopasdfghjklzxcvbnm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +66,27 @@ public class RegisterActivity extends AppCompatActivity {
         mobileNumber = editText_mobileNumber.getText().toString();
         address = editText_Address.getText().toString();
         password = editText_password.getText().toString();
+        uniqueId = getAlphaNumericString(8);
 
         RegisterModel registerModel = new RegisterModel(username,dob,mailID,mobileNumber,
-                address,password);
+                address,password,uniqueId);
         databaseReference.push().setValue(registerModel);
         Toast.makeText(RegisterActivity.this, "Added on Successfully", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public static String getAlphaNumericString(int n){
+        String AlphaNumericString = "0123456789"+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"+"0123456789";
+        StringBuilder sb = new StringBuilder(n);
+        for (int i = 0; i < n; i++) {
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+        return sb.toString();
     }
 }
