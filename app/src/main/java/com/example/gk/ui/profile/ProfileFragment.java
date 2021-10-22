@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
 
         SharedPreferences pref = requireActivity().getSharedPreferences(
                 "MyPref", MODE_PRIVATE);
-        username = pref.getString("USERNAME","");
+        username = pref.getString("USERNAME","Gopinathan N");
 
         textView_username = root.findViewById(R.id.textView_username);
         textView_mailId = root.findViewById(R.id.textView_mailId);

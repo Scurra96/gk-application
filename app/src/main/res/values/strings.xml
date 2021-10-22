@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GK</string>
     <string name="todo">TODO</string>
-    <string name="welcome_content">Welcome <br>to the</br> <br>GK</br> Expertise Application</string>
+    <string name="welcome_content">Welcome <br>to the</br> <br>GK</br> Expertise</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

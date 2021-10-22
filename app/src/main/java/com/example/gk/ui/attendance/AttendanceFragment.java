@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.gk.R;
@@ -33,13 +36,14 @@ import java.util.Locale;
 
 public class AttendanceFragment extends Fragment {
 
-    TextView text_date_and_time,text_checkIn,textView_confirm;
+    TextView text_date_and_time,text_checkIn,textView_confirm,textViewOnOff;
     RelativeLayout relative_checkIn,relative_checkOut;
     EditText editText_siteName, editText_location;
-    RelativeLayout relativeLayout_yes,relativeLayout_no,relativeLayout_Okay;
+    RelativeLayout relativeLayoutProceed,relativeLayoutCancel,relativeLayout_Okay;
     DatabaseReference databaseReference;
     String username,dateAndTime,siteLocation,siteName;
-    long i=0;
+    SwitchCompat switchCompat;
+    LinearLayout linearLayout_site,linearLayout_location;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +60,7 @@ public class AttendanceFragment extends Fragment {
                 "MyPref", MODE_PRIVATE);
         username = pref.getString("USERNAME","");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm aa",
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, kk:mm aa",
                 Locale.getDefault());
         String formatDate_time = dateFormat.format(new Date());
         text_date_and_time.setText(formatDate_time);
@@ -76,10 +80,30 @@ public class AttendanceFragment extends Fragment {
 
                 editText_siteName = popupView.findViewById(R.id.editText_siteName);
                 editText_location = popupView.findViewById(R.id.editText_location);
-                relativeLayout_yes = popupView.findViewById(R.id.relativeLayout_yes);
-                relativeLayout_no = popupView.findViewById(R.id.relativeLayout_no);
+                relativeLayoutProceed = popupView.findViewById(R.id.relativeLayoutProceed);
+                relativeLayoutCancel = popupView.findViewById(R.id.relativeLayoutCancel);
+                switchCompat = popupView.findViewById(R.id.switchCompat);
+                textViewOnOff = popupView.findViewById(R.id.textViewOnOff);
+                linearLayout_site = popupView.findViewById(R.id.linearLayout_site);
+                linearLayout_location = popupView.findViewById(R.id.linearLayout_location);
 
-                relativeLayout_yes.setOnClickListener(new View.OnClickListener() {
+                switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(!isChecked){
+                            textViewOnOff.setText("Office");
+                            linearLayout_site.setVisibility(View.GONE);
+                            linearLayout_location.setVisibility(View.GONE);
+                        }
+                        else{
+                            textViewOnOff.setText("Site Location");
+                            linearLayout_site.setVisibility(View.VISIBLE);
+                            linearLayout_location.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
+                relativeLayoutProceed.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         addUserDataYes();
@@ -88,12 +112,15 @@ public class AttendanceFragment extends Fragment {
                     }
                 });
 
-                relativeLayout_no.setOnClickListener(new View.OnClickListener() {
+                relativeLayoutCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        addUserDataNo();
+//                        addUserDataNo();
                         Toast.makeText(requireActivity(), "No", Toast.LENGTH_SHORT).show();
                         popupWindow.dismiss();
+                        relative_checkOut.setVisibility(View.GONE);
+                        relative_checkIn.setVisibility(View.VISIBLE);
+
                     }
                 });
 
@@ -104,13 +131,6 @@ public class AttendanceFragment extends Fragment {
     }
 
     private void addUserDataNo() {
-//        username = text_date_and_time.getText().toString();
-        dateAndTime = text_date_and_time.getText().toString();
-        siteName = editText_siteName.getText().toString();
-        siteLocation = editText_location.getText().toString();
-        SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
-                siteLocation,"Check In");
-        databaseReference.push().setValue(siteLocationModel);
 
         View popupView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.layout_confirm, null);
@@ -132,7 +152,6 @@ public class AttendanceFragment extends Fragment {
 
     private void addUserDataYes() {
 
-//        username = text_date_and_time.getText().toString();
         dateAndTime = text_date_and_time.getText().toString();
         siteName = editText_siteName.getText().toString();
         siteLocation = editText_location.getText().toString();
@@ -154,10 +173,5 @@ public class AttendanceFragment extends Fragment {
                 popupWindow.dismiss();
             }
         });
-
-
-
-
-
     }
 }

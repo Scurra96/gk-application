@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen.PopupOverlay">
 
@@ -27,12 +27,35 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semi_bold"
                     android:textSize="18sp"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/white"
                     android:text="Hi, James"/>
+
+                <RelativeLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:elevation="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/circle_round_white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SOS"
+                        android:layout_centerInParent="true"
+                        android:padding="1dp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/logo_color"/>
+
+                </RelativeLayout>
 
                 <ImageView
                     android:layout_width="36sp"
                     android:layout_height="36sp"
+                    android:visibility="gone"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="25dp"
                     android:src="@drawable/sos"/>

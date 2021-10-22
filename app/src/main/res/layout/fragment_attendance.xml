@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AttendanceFragment">
+    android:layout_height="match_parent">
 
    <TextView
        android:id="@+id/text_daily"
@@ -19,7 +18,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
@@ -42,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
+            android:visibility="visible"
+            android:layout_marginBottom="25dp"
             android:layout_marginStart="55dp"
             android:layout_marginEnd="55dp"
             android:layout_below="@+id/text_date_and_time"
@@ -65,6 +66,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="55dp"
+            android:layout_marginBottom="25dp"
             android:visibility="gone"
             android:layout_marginEnd="55dp"
             android:layout_below="@+id/text_date_and_time"

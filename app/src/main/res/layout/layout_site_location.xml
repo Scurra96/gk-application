@@ -19,44 +19,79 @@
             android:id="@+id/text_siteLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/logo_color"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:text="Site Location"/>
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="Job Details"
+            android:textColor="@color/logo_color"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@+id/text_siteLocation">
+
+            <TextView
+                android:id="@+id/textViewOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="45dp"
+                android:text="Office"
+                android:layout_toEndOf="@id/switchCompat"
+                android:fontFamily="@font/poppins_extra_bold"
+                android:textColor="@color/color_black"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchCompat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:checked="false"
+                android:thumb="@drawable/thumb_selector"
+                app:track="@drawable/track_selector" />
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout_site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/relativeLayout_switch"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="25dp"
-            android:layout_below="@id/text_siteLocation"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:text="Site Name"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_semi_bold"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editText_siteName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/color_black"
                 android:layout_marginBottom="5dp"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/poppins_bold"/>
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/color_black"
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/color_grey_lite"/>
+                android:background="@color/color_grey_lite" />
 
         </LinearLayout>
 
@@ -64,33 +99,34 @@
             android:id="@+id/linearLayout_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayout_site"
             android:layout_marginStart="25dp"
+            android:visibility="gone"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="25dp"
-            android:layout_below="@id/linearLayout_site"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:text="Location"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_semi_bold"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editText_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/color_black"
                 android:layout_marginBottom="5dp"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_bold"
-                android:background="@android:color/transparent"/>
+                android:textColor="@color/color_black"
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/color_grey_lite"/>
+                android:background="@color/color_grey_lite" />
 
         </LinearLayout>
 
@@ -98,50 +134,58 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="25dp"
             android:padding="15dp"
-            android:layout_marginBottom="40dp"
-            android:layout_marginEnd="20dp"
             android:clipToPadding="false"
             android:background="@color/white"
             android:layout_below="@+id/linearLayout_location"
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:id="@+id/relativeLayout_yes"
-                android:layout_width="108dp"
-                android:layout_height="40dp"
+                android:id="@+id/relativeLayoutProceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:elevation="5dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:paddingTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
                 android:background="@drawable/rectangle_radius_white_20x"
                 android:layout_marginEnd="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Yes"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/poppins_extra_bold"
-                    android:textColor="@color/logo_color"/>
+                    android:text="Proceed"
+                    android:textColor="@color/logo_color"
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relativeLayout_no"
-                android:layout_width="108dp"
-                android:layout_height="40dp"
+                android:id="@+id/relativeLayoutCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:elevation="5dp"
-                android:background="@drawable/rectangle_radius_white_20x"
+                android:background="@drawable/rectangle_radius_corner_black_bg"
                 android:layout_marginEnd="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="No"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/poppins_extra_bold"
-                    android:textColor="@color/color_black"/>
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 

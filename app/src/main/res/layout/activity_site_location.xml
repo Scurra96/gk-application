@@ -55,10 +55,10 @@
             android:id="@+id/imageView_firstLetter"
             android:layout_width="86dp"
             android:layout_height="86dp"
-            android:layout_marginStart="25dp"
-            android:elevation="10dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/circle_round_white">
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circle_round_white"
+            android:elevation="10dp">
 
             <TextView
                 android:id="@+id/textView_firstLetter"
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:text="Username"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/color_black"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"/>
 
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins_bold"
                     android:text="James And" />
                 <View
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:text="Mobile Number"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"/>
 
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins_bold"
                     android:text="9876543210" />
                 <View
@@ -204,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:text="Location"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"/>
 
@@ -214,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins_bold"
                     android:text="XXXX XXX XXXXX XXX" />
                 <View
@@ -237,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:text="Unique ID"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"/>
 
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins_bold"
                     android:text="XXXX XXX XXXXX XXX" />
                 <View
