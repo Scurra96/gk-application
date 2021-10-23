@@ -8,6 +8,11 @@ public class RegisteredModel {
     String address;
     String password;
     String uniqueID;
+    String status;
+
+    public String getStatus() {
+        return status;
+    }
 
     public String getUniqueID() {
         return uniqueID;

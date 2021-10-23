@@ -7,7 +7,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <RelativeLayout
-        android:id="@+id/imageView"
+        android:id="@+id/relativeLayoutCircle"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:gravity="center"
@@ -18,13 +18,13 @@
         android:background="@drawable/circle_round_white">
 
         <TextView
+            android:id="@+id/textView_firstLetter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="34dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/logo_color"
             android:fontFamily="@font/poppins_extra_bold"
-            android:text="J" />
+            android:textColor="@color/logo_color"
+            android:textSize="34dp" />
 
     </RelativeLayout>
 
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:layout_above="@id/textView"
+        android:layout_above="@id/textView_mailId"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="15dp"
         android:textColor="@color/white"
@@ -41,11 +41,11 @@
         android:text="@string/nav_header_title" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_mailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/relativeLayoutCircle"
         android:layout_marginStart="15dp"
         android:textColor="@color/color_black"
         android:fontFamily="@font/poppins_extra_bold"

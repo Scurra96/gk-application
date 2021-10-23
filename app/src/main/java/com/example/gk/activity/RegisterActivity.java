@@ -26,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     TextView textViewLogin;
     DatabaseReference databaseReference;
     String username,dob,mailID,mobileNumber,address,password,uniqueId;
-    private static final String ALLOWED_CHARACTERS ="0123456789qwertyuiopasdfghjklzxcvbnm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         buttonSignIn = findViewById(R.id.buttonSignIn);
         textViewLogin = findViewById(R.id.textViewLogin);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("RegisterDetails");
+        databaseReference = FirebaseDatabase.getInstance().getReference("RegisterDetails");
 
         textViewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
         uniqueId = getAlphaNumericString(8);
 
         RegisterModel registerModel = new RegisterModel(username,dob,mailID,mobileNumber,
-                address,password,uniqueId);
-        databaseReference.push().setValue(registerModel);
+                address,password,uniqueId,"review");
+        databaseReference.child(uniqueId).setValue(registerModel);
         Toast.makeText(RegisterActivity.this, "Added on Successfully", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(i);

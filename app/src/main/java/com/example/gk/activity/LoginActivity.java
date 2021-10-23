@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,11 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
 
     Button button_Login;
-//    SharedPreferences sharedPreferences;
     EditText editText_username,editText_password;
     String username = "",password = "";
     DatabaseReference databaseReference;
     ValueEventListener listener;
+    CheckBox checkBox_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         editText_username = findViewById(R.id.editText_username);
         editText_password = findViewById(R.id.editText_password);
+        checkBox_view = findViewById(R.id.checkBox_view);
 
         button_Login = findViewById(R.id.button_Login);
         button_Login.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +59,24 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     Intent i = new Intent(getApplicationContext(),HomeActivity.class);
                     startActivity(i);
+                    finish();
                     Toast.makeText(LoginActivity.this, "User", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+        checkBox_view.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("USERNAME", editText_username.getText().toString());
+                    editor.putString("PASSWORD", editText_password.getText().toString());
+                    editor.apply();
+                }
+            }
+        });
+        editText_username.setText(getIntent().getStringExtra("logoutUsername"));
+        editText_password.setText(getIntent().getStringExtra("logoutPassword"));
 //        button_Login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

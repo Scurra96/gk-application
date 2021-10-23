@@ -156,7 +156,7 @@ public class AttendanceFragment extends Fragment {
         siteName = editText_siteName.getText().toString();
         siteLocation = editText_location.getText().toString();
         SiteLocationModel siteLocationModel = new SiteLocationModel(username,dateAndTime,siteName,
-                siteLocation,"Check In");
+                siteLocation,textViewOnOff.getText().toString());
         databaseReference.push().setValue(siteLocationModel);
         View popupView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.layout_confirm, null);

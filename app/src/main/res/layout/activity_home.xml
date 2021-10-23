@@ -28,7 +28,7 @@
         app:menu="@menu/activity_main_drawer">
 
         <Button
-            android:id="@+id/footer_item_1"
+            android:id="@+id/buttonLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

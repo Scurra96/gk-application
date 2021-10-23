@@ -8,8 +8,10 @@ public class RegisterModel {
     String address;
     String password;
     String uniqueID;
+    String status;
 
-    public RegisterModel(String username, String dob, String emailID, String mobileNo, String address, String password, String uniqueID) {
+    public RegisterModel(String username, String dob, String emailID, String mobileNo,
+                         String address, String password, String uniqueID,String status) {
         this.username = username;
         this.dob = dob;
         this.emailID = emailID;
@@ -17,6 +19,11 @@ public class RegisterModel {
         this.address = address;
         this.password = password;
         this.uniqueID = uniqueID;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public String getUsername() {

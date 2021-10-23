@@ -79,25 +79,32 @@
 
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox_view"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/linearLayout_content"
-        android:layout_marginStart="20dp"
-        android:buttonTint="@color/logo_color"
-        android:layout_marginTop="10dp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/logo_color"
-        android:layout_marginTop="10dp"
-        android:paddingTop="5dp"
-        android:layout_toRightOf="@id/checkBox_view"
-        android:layout_below="@+id/linearLayout_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Remember me"/>
+        <CheckBox
+            android:id="@+id/checkBox_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:buttonTint="@color/logo_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/logo_color"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Remember me"/>
+
+    </LinearLayout>
+
+
 
 
 

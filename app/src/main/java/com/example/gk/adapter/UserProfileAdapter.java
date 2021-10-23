@@ -53,6 +53,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
                 i.putExtra("user_mobileNo",registeredModel.getMobileNo());
                 i.putExtra("user_address",registeredModel.getAddress());
                 i.putExtra("user_uniqueNo",registeredModel.getUniqueID());
+                i.putExtra("user_status",registeredModel.getStatus());
                 context.startActivity(i);
             }
         });
