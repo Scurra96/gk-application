@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UserStatusActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:elevation="25dp"
+            android:layout_centerInParent="true"
+            android:clipToPadding="false"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/rectangle_radius_corner_color">
+
+            <TextView
+                android:id="@+id/textView_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Your are not active account. Please contact GK Admin"
+                android:textColor="@color/color_white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/rectangle_radius_corner"
+        android:elevation="5dp"
+        android:text="Logout"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

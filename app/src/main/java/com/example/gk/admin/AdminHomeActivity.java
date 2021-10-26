@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.gk.R;
 import com.example.gk.adapter.SiteLocationAdapter;
 import com.example.gk.adapter.UserProfileAdapter;
+import com.example.gk.model.RegisterModel;
 import com.example.gk.model.RegisteredModel;
 import com.example.gk.model.SiteLocationModel;
 import com.example.gk.model.SiteModel;
@@ -31,8 +32,9 @@ public class AdminHomeActivity extends AppCompatActivity {
     RecyclerView recyclerView_siteLocation,recyclerView_userProfile;
     TextView textView_viewAll;
     DatabaseReference databaseReference;
-    ArrayList<SiteModel> siteModels;
-    ArrayList<RegisteredModel> registeredModels;
+    DatabaseReference databaseReference1;
+    ArrayList<SiteLocationModel> siteLocationModels;
+    ArrayList<RegisterModel> registeredModels;
     SiteLocationAdapter siteLocationAdapter;
     UserProfileAdapter userProfileAdapter;
     Toolbar toolbar_admin;
@@ -42,7 +44,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_admin_home);
 
-            siteModels = new ArrayList<>();
+            siteLocationModels = new ArrayList<>();
             registeredModels = new ArrayList<>();
 
             toolbar_admin = findViewById(R.id.toolbar_admin);
@@ -59,12 +61,12 @@ public class AdminHomeActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                siteModels.clear();
+                siteLocationModels.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    SiteModel siteModel = dataSnapshot.getValue(SiteModel.class);
-                    siteModels.add(siteModel);
+                    SiteLocationModel siteLocationModel = dataSnapshot.getValue(SiteLocationModel.class);
+                    siteLocationModels.add(siteLocationModel);
                 }
-                siteLocationAdapter = new SiteLocationAdapter(getApplicationContext(),siteModels);
+                siteLocationAdapter = new SiteLocationAdapter(getApplicationContext(),siteLocationModels);
                 recyclerView_siteLocation.setAdapter(siteLocationAdapter);
             }
 
@@ -77,13 +79,13 @@ public class AdminHomeActivity extends AppCompatActivity {
         recyclerView_userProfile = findViewById(R.id.recyclerView_userProfile);
         recyclerView_userProfile.setHasFixedSize(true);
         recyclerView_userProfile.setLayoutManager(new LinearLayoutManager(this));
-        databaseReference = FirebaseDatabase.getInstance().getReference("RegisterDetails");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference1 = FirebaseDatabase.getInstance().getReference("RegisterDetails");
+            databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 registeredModels.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    RegisteredModel registeredModel = dataSnapshot.getValue(RegisteredModel.class);
+                    RegisterModel registeredModel = dataSnapshot.getValue(RegisterModel.class);
                     registeredModels.add(registeredModel);
                 }
                 userProfileAdapter = new UserProfileAdapter(getApplicationContext(),registeredModels);

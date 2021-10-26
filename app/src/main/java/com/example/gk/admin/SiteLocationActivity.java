@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Locale;
 
 public class SiteLocationActivity extends AppCompatActivity {
 
@@ -42,12 +45,20 @@ public class SiteLocationActivity extends AppCompatActivity {
         textView_mobileNumber = findViewById(R.id.textView_mobileNumber);
         textView_unique_id = findViewById(R.id.textView_unique_id);
 
+        relativeLayout_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         textView_siteName.setText(getIntent().getStringExtra("siteName"));
         textView_username.setText(getIntent().getStringExtra("siteLocationUsername"));
         textView_siteLocation.setText(getIntent().getStringExtra("siteLocation"));
 
         char result = getIntent().getStringExtra("siteName").charAt(0);
-        textView_firstLetter.setText(String.valueOf(result));
+        textView_firstLetter.setText(String.valueOf(result)
+                .toUpperCase(Locale.ROOT));
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference(registerUserDetails);

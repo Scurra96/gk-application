@@ -2,6 +2,7 @@ package com.example.gk.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gk.R;
 import com.example.gk.admin.UserProfileActivity;
+import com.example.gk.model.RegisterModel;
 import com.example.gk.model.RegisteredModel;
 import com.example.gk.model.SiteModel;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<RegisteredModel> registeredModels;
+    ArrayList<RegisterModel> registeredModels;
 
-    public UserProfileAdapter(Context applicationContext, ArrayList<RegisteredModel> registeredModels) {
+    public UserProfileAdapter(Context applicationContext, ArrayList<RegisterModel> registeredModels) {
         this.context = applicationContext;
         this.registeredModels = registeredModels;
     }
@@ -38,22 +41,21 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        RegisteredModel registeredModel = registeredModels.get(position);
+        RegisterModel registeredModel = registeredModels.get(position);
         holder.textView_username.setText(registeredModel.getUsername());
         holder.textView_unique_id.setText(registeredModel.getUniqueID());
         char result = registeredModel.getUsername().charAt(0);
-        holder.textView_firstLetter.setText(String.valueOf(result));
+        holder.textView_firstLetter.setText(String.valueOf(result)
+                .toUpperCase(Locale.ROOT));
         holder.relativeLayout_userProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.d("Mobile", registeredModel.getMobileNo());
+
                 Intent i = new Intent(context, UserProfileActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra("user_username",registeredModel.getUsername());
-                i.putExtra("user_emailID",registeredModel.getEmailID());
-                i.putExtra("user_mobileNo",registeredModel.getMobileNo());
-                i.putExtra("user_address",registeredModel.getAddress());
-                i.putExtra("user_uniqueNo",registeredModel.getUniqueID());
-                i.putExtra("user_status",registeredModel.getStatus());
+                i.putExtra("user_MobileNumber",registeredModel.getMobileNo());
                 context.startActivity(i);
             }
         });

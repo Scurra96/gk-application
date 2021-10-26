@@ -26,7 +26,8 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/activity_site_location.xml" value="0.269506733448426" />
         <entry key="app/src/main/res/layout/activity_site_location2.xml" value="0.2328125" />
-        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.19420043228658196" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.21604243643936094" />
+        <entry key="app/src/main/res/layout/activity_user_status.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.2399254422159137" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.246875" />
@@ -34,9 +35,9 @@
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2831851053442898" />
         <entry key="app/src/main/res/layout/layout_card_list_of_site.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.22868268946928003" />
         <entry key="app/src/main/res/layout/layout_card_user_profile.xml" value="0.2484577387849521" />
-        <entry key="app/src/main/res/layout/layout_confirm.xml" value="0.3497833766998597" />
+        <entry key="app/src/main/res/layout/layout_confirm.xml" value="0.2858566714657073" />
         <entry key="app/src/main/res/layout/layout_site_location.xml" value="0.26844767556592203" />
         <entry key="app/src/main/res/layout/layout_switch.xml" value="0.525997549675266" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.246875" />

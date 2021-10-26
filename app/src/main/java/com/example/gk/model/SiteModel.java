@@ -2,28 +2,38 @@ package com.example.gk.model;
 
 public class SiteModel {
     String username;
-    String dateAndTime;
-    String siteLocation;
+    String date;
     String siteName;
-    String checkIn_Out;
+    String siteLocation;
+    String checkIn;
+    String checkOut;
+    String mobile;
 
     public String getUsername() {
         return username;
     }
 
-    public String getDateAndTime() {
-        return dateAndTime;
-    }
-
-    public String getSiteLocation() {
-        return siteLocation;
+    public String getDate() {
+        return date;
     }
 
     public String getSiteName() {
         return siteName;
     }
 
-    public String getCheckIn_Out() {
-        return checkIn_Out;
+    public String getSiteLocation() {
+        return siteLocation;
+    }
+
+    public String getCheckIn() {
+        return checkIn;
+    }
+
+    public String getCheckOut() {
+        return checkOut;
+    }
+
+    public String getMobile() {
+        return mobile;
     }
 }

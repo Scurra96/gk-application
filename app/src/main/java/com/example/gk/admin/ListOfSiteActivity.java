@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.example.gk.R;
 import com.example.gk.adapter.ListOfSitesAdapter;
 import com.example.gk.adapter.UserProfileAdapter;
 import com.example.gk.model.RegisteredModel;
+import com.example.gk.model.SiteLocationModel;
 import com.example.gk.model.SiteModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,30 +26,38 @@ import java.util.ArrayList;
 public class ListOfSiteActivity extends AppCompatActivity {
 
     RecyclerView recyclerView_siteOfList;
-    ArrayList<SiteModel> siteModels;
+    ArrayList<SiteLocationModel> siteLocationModels;
     DatabaseReference databaseReference;
     ListOfSitesAdapter listOfSitesAdapter;
+    RelativeLayout relativeLayout_arrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_site);
 
-        siteModels = new ArrayList<>();
+        siteLocationModels = new ArrayList<>();
 
         recyclerView_siteOfList = findViewById(R.id.recyclerView_siteOfList);
+        relativeLayout_arrow = findViewById(R.id.relativeLayout_arrow);
+        relativeLayout_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         recyclerView_siteOfList.setHasFixedSize(true);
         recyclerView_siteOfList.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("SiteLocation");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                siteModels.clear();
+                siteLocationModels.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    SiteModel siteModel = dataSnapshot.getValue(SiteModel.class);
-                    siteModels.add(siteModel);
+                    SiteLocationModel siteModel = dataSnapshot.getValue(SiteLocationModel.class);
+                    siteLocationModels.add(siteModel);
                 }
-                listOfSitesAdapter = new ListOfSitesAdapter(getApplicationContext(),siteModels);
+                listOfSitesAdapter = new ListOfSitesAdapter(getApplicationContext(),siteLocationModels);
                 recyclerView_siteOfList.setAdapter(listOfSitesAdapter);
             }
 

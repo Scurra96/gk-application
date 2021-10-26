@@ -15,5 +15,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_all">View All</string>
+    <string name="default_notification_channel_id" translatable="false">HEADS_UP_NOTIFICATION</string>
 
 </resources>

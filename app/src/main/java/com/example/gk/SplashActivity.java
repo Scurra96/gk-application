@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.gk.activity.UserStatusActivity;
 import com.example.gk.activity.WelcomeActivity;
+import com.example.gk.admin.AdminHomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,10 +24,16 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                if(!pref.getString("USERNAME","").isEmpty()){
-                    Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
-                    startActivity(mainIntent);
-                    finish();
+                if(!pref.getString("user_login_status","").isEmpty()){
+                    if(pref.getString("user_login_status","").equalsIgnoreCase("admin")){
+                        Intent mainIntent = new Intent(SplashActivity.this, AdminHomeActivity.class);
+                        startActivity(mainIntent);
+                        finish();
+                    }else {
+                        Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
+                        startActivity(mainIntent);
+                        finish();
+                    }
                 }
                 else{
                     Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);

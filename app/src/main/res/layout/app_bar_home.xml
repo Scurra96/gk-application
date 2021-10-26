@@ -23,15 +23,17 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/textViewUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:textSize="18sp"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="Hi, James"
                     android:textColor="@color/white"
-                    android:text="Hi, James"/>
+                    android:textSize="18sp" />
 
                 <RelativeLayout
+                    android:id="@+id/relativeLayoutSos"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:elevation="5dp"

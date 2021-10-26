@@ -22,11 +22,11 @@ import java.util.ArrayList;
 public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<SiteModel> siteModels;
+    ArrayList<SiteLocationModel> siteLocationModels;
 
-    public SiteLocationAdapter(Context context, ArrayList<SiteModel> siteModels) {
-        this.context = context;
-        this.siteModels = siteModels;
+    public SiteLocationAdapter(Context applicationContext, ArrayList<SiteLocationModel> siteLocationModels) {
+        this.context = applicationContext;
+        this.siteLocationModels = siteLocationModels;
     }
 
     @NonNull
@@ -39,8 +39,8 @@ public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        SiteModel siteModel = siteModels.get(position);
-        holder.textView_dateAndTime.setText(siteModel.getDateAndTime());
+        SiteLocationModel siteModel = siteLocationModels.get(position);
+        holder.textView_dateAndTime.setText(siteModel.getDate());
         holder.textView_siteLocation.setText(siteModel.getSiteLocation());
         holder.textView_username.setText(siteModel.getUsername());
 
@@ -52,7 +52,7 @@ public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapte
                 i.putExtra("siteLocation",siteModel.getSiteLocation());
                 i.putExtra("siteLocationUsername",siteModel.getUsername());
                 i.putExtra("siteName",siteModel.getSiteName());
-                i.putExtra("uniqueID",siteModel.getCheckIn_Out());
+                i.putExtra("uniqueID",siteModel.getCheckIn());
                 context.startActivity(i);
             }
         });
@@ -61,7 +61,7 @@ public class SiteLocationAdapter extends RecyclerView.Adapter<SiteLocationAdapte
 
     @Override
     public int getItemCount() {
-        return 3;
+        return siteLocationModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

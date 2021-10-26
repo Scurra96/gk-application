@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
 
 
 public class ProfileFragment extends Fragment {
@@ -26,7 +27,7 @@ public class ProfileFragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     String registerUserDetails = "RegisterDetails";
-    String username;
+    String username,usernameValue,userMobileNo;
     TextView textView_username,textView_mailId,textView_dob,textView_mobileNumber,textView_address,
             textView_firstLetter;
     @Override
@@ -36,7 +37,8 @@ public class ProfileFragment extends Fragment {
 
         SharedPreferences pref = requireActivity().getSharedPreferences(
                 "MyPref", MODE_PRIVATE);
-        username = pref.getString("USERNAME","Gopinathan N");
+        username = pref.getString("user_UserName","");
+        userMobileNo = pref.getString("user_MobileNumber","");
 
         textView_username = root.findViewById(R.id.textView_username);
         textView_mailId = root.findViewById(R.id.textView_mailId);
@@ -51,13 +53,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    if(ds.child("username").getValue().equals(username)){
-                        textView_username.setText(username);
+
+                    if(ds.child("mobileNo").getValue().equals(userMobileNo)){
                         textView_mailId.setText(ds.child("emailID").getValue(String.class));
                         textView_dob.setText(ds.child("dob").getValue(String.class));
                         textView_mobileNumber.setText(ds.child("mobileNo").getValue(String.class));
                         textView_address.setText(ds.child("address").getValue(String.class));
+                        textView_username.setText(ds.child("username").getValue(String.class));
                     }
+
                 }
             }
 
@@ -68,9 +72,9 @@ public class ProfileFragment extends Fragment {
         });
 
         textView_firstLetter = root.findViewById(R.id.textView_firstLetter);
-
         char result = username.charAt(0);
-        textView_firstLetter.setText(String.valueOf(result));
+        textView_firstLetter.setText(String.valueOf(result)
+                .toUpperCase(Locale.ROOT));
 
         return root;
     }

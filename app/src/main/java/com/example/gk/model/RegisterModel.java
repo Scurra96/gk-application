@@ -10,6 +10,9 @@ public class RegisterModel {
     String uniqueID;
     String status;
 
+    public RegisterModel(){
+    }
+
     public RegisterModel(String username, String dob, String emailID, String mobileNo,
                          String address, String password, String uniqueID,String status) {
         this.username = username;

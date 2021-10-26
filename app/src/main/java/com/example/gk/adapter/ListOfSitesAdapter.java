@@ -13,18 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gk.R;
 import com.example.gk.admin.SiteLocationActivity;
+import com.example.gk.model.SiteLocationModel;
 import com.example.gk.model.SiteModel;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<SiteModel> siteModels;
+    ArrayList<SiteLocationModel> siteLocationModels;
 
-    public ListOfSitesAdapter(Context context, ArrayList<SiteModel> siteModels) {
-        this.context = context;
-        this.siteModels = siteModels;
+    public ListOfSitesAdapter(Context applicationContext, ArrayList<SiteLocationModel> siteLocationModels) {
+        this.context = applicationContext;
+        this.siteLocationModels = siteLocationModels;
     }
 
     @NonNull
@@ -32,19 +34,20 @@ public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.
     public ListOfSitesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.layout_card_list_of_site,
                 parent,false);
-        return new ListOfSitesAdapter.MyViewHolder(v);
+        return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListOfSitesAdapter.MyViewHolder holder, int position) {
-        SiteModel siteModel = siteModels.get(position);
+        SiteLocationModel siteModel = siteLocationModels.get(position);
         holder.textView_siteLocation.setText(siteModel.getSiteName());
-        holder.textView_siteLocation.setText(siteModel.getUsername());
-        holder.textView_siteLocation.setText(siteModel.getSiteLocation());
-        holder.textView_siteLocation.setText(siteModel.getCheckIn_Out());
+//        holder.textView_siteLocation.setText(siteModel.getUsername());
+//        holder.textView_siteLocation.setText(siteModel.getSiteLocation());
+//        holder.textView_siteLocation.setText(siteModel.getCheckIn_Out());
 
         char result = siteModel.getSiteName().charAt(0);
-        holder.textView_firstLetter.setText(String.valueOf(result));
+        holder.textView_firstLetter.setText(String.valueOf(result)
+                .toUpperCase(Locale.ROOT));
 
         holder.relativeLayout_siteList_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +64,7 @@ public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.
 
     @Override
     public int getItemCount() {
-        return siteModels.size();
+        return siteLocationModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

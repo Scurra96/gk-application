@@ -10,10 +10,10 @@
         android:id="@+id/imageView_logo"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:src="@drawable/logo"
-        android:contentDescription="@string/todo" />
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView_content"
@@ -43,16 +43,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             app:startIconTint="@color/logo_color"
-            app:startIconDrawable="@drawable/ic_baseline_person_outline">
+            app:startIconDrawable="@drawable/ic_baseline_phone_android">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/editText_username"
+                android:id="@+id/editText_mobileNumber"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:inputType="text"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:hint="Username"/>
+                android:hint="Mobile Number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

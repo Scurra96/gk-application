@@ -3,36 +3,51 @@ package com.example.gk.model;
 public class SiteLocationModel {
 
     String username;
-    String dateAndTime;
-    String siteLocation;
+    String date;
     String siteName;
-    String checkIn_Out;
+    String siteLocation;
+    String checkIn;
+    String checkOut;
+    String mobile;
 
-    public SiteLocationModel(String username, String dateAndTime, String siteLocation, String siteName, String checkIn_Out) {
+    public SiteLocationModel() {
+    }
+
+    public SiteLocationModel(String username, String date, String siteName, String siteLocation, String checkIn, String checkOut, String mobile) {
         this.username = username;
-        this.dateAndTime = dateAndTime;
-        this.siteLocation = siteLocation;
+        this.date = date;
         this.siteName = siteName;
-        this.checkIn_Out = checkIn_Out;
+        this.siteLocation = siteLocation;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.mobile = mobile;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getDateAndTime() {
-        return dateAndTime;
-    }
-
-    public String getSiteLocation() {
-        return siteLocation;
+    public String getDate() {
+        return date;
     }
 
     public String getSiteName() {
         return siteName;
     }
 
-    public String getCheckIn_Out() {
-        return checkIn_Out;
+    public String getSiteLocation() {
+        return siteLocation;
+    }
+
+    public String getCheckIn() {
+        return checkIn;
+    }
+
+    public String getCheckOut() {
+        return checkOut;
+    }
+
+    public String getMobile() {
+        return mobile;
     }
 }
