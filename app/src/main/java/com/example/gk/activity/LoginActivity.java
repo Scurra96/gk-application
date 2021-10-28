@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                         databaseReferenceAdmin.child("token").setValue(task.getResult().getToken());
                                         Log.d("Token", task.getResult().getToken());
                                         Intent i = new Intent(getApplicationContext(),AdminHomeActivity.class);
+                                        finish();
                                         startActivity(i);
                                         Toast.makeText(LoginActivity.this, "ADMIN", Toast.LENGTH_SHORT).show();
                                     }

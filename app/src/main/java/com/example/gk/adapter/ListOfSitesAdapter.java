@@ -41,9 +41,6 @@ public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.
     public void onBindViewHolder(@NonNull ListOfSitesAdapter.MyViewHolder holder, int position) {
         SiteLocationModel siteModel = siteLocationModels.get(position);
         holder.textView_siteLocation.setText(siteModel.getSiteName());
-//        holder.textView_siteLocation.setText(siteModel.getUsername());
-//        holder.textView_siteLocation.setText(siteModel.getSiteLocation());
-//        holder.textView_siteLocation.setText(siteModel.getCheckIn_Out());
 
         char result = siteModel.getSiteName().charAt(0);
         holder.textView_firstLetter.setText(String.valueOf(result)
@@ -56,6 +53,10 @@ public class ListOfSitesAdapter extends RecyclerView.Adapter<ListOfSitesAdapter.
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.putExtra("siteLocation",siteModel.getSiteLocation());
                 i.putExtra("siteLocationUsername",siteModel.getUsername());
+                i.putExtra("siteDate",siteModel.getDate());
+                i.putExtra("siteCheckIn",siteModel.getCheckIn());
+                i.putExtra("siteCheckOut",siteModel.getCheckOut());
+                i.putExtra("siteMobile",siteModel.getMobile());
                 i.putExtra("siteName",siteModel.getSiteName());
                 context.startActivity(i);
             }

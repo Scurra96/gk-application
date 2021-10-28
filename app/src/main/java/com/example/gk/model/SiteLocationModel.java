@@ -50,4 +50,32 @@ public class SiteLocationModel {
     public String getMobile() {
         return mobile;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
+
+    public void setSiteLocation(String siteLocation) {
+        this.siteLocation = siteLocation;
+    }
+
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 }

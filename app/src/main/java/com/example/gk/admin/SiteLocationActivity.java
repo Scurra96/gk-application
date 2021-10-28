@@ -21,7 +21,7 @@ import java.util.Locale;
 public class SiteLocationActivity extends AppCompatActivity {
 
     TextView textView_siteName,textView_firstLetter,textView_username,textView_siteLocation,
-            textView_unique_id,textView_mobileNumber;
+            textView_unique_id,textView_mobileNumber,textView_date,textView_checkIn,textView_checkOut;
     RelativeLayout relativeLayout_arrow;
     FirebaseDatabase database;
     String username;
@@ -44,6 +44,9 @@ public class SiteLocationActivity extends AppCompatActivity {
         textView_siteLocation = findViewById(R.id.textView_siteLocation);
         textView_mobileNumber = findViewById(R.id.textView_mobileNumber);
         textView_unique_id = findViewById(R.id.textView_unique_id);
+        textView_date = findViewById(R.id.textView_date);
+        textView_checkIn = findViewById(R.id.textView_checkIn);
+        textView_checkOut = findViewById(R.id.textView_checkOut);
 
         relativeLayout_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +58,9 @@ public class SiteLocationActivity extends AppCompatActivity {
         textView_siteName.setText(getIntent().getStringExtra("siteName"));
         textView_username.setText(getIntent().getStringExtra("siteLocationUsername"));
         textView_siteLocation.setText(getIntent().getStringExtra("siteLocation"));
+        textView_date.setText(getIntent().getStringExtra("siteDate"));
+        textView_checkIn.setText(getIntent().getStringExtra("siteCheckIn"));
+        textView_checkOut.setText(getIntent().getStringExtra("siteCheckOut"));
 
         char result = getIntent().getStringExtra("siteName").charAt(0);
         textView_firstLetter.setText(String.valueOf(result)

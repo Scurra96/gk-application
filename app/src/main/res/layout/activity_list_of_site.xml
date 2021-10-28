@@ -38,12 +38,12 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:layout_toEndOf="@+id/relativeLayout_arrow"
             android:textColor="@color/white"
-            android:text="List of sites"/>
+            android:text="List of Profiles"/>
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_siteOfList"
+        android:id="@+id/recyclerView_userProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_list_of_sites"

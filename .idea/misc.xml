@@ -34,14 +34,16 @@
         <entry key="app/src/main/res/layout/fragment_attendance.xml" value="0.26346369657363655" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2831851053442898" />
+        <entry key="app/src/main/res/layout/layout_card_employee_number.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/layout_card_list_of_site.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.22868268946928003" />
+        <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.20501076155024123" />
         <entry key="app/src/main/res/layout/layout_card_user_profile.xml" value="0.2484577387849521" />
         <entry key="app/src/main/res/layout/layout_confirm.xml" value="0.2858566714657073" />
         <entry key="app/src/main/res/layout/layout_site_location.xml" value="0.26844767556592203" />
         <entry key="app/src/main/res/layout/layout_switch.xml" value="0.525997549675266" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.246875" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.246875" />
+        <entry key="app/src/main/res/menu/admin_menu.xml" value="0.2359375" />
         <entry key="app/src/main/res/menu/home.xml" value="0.246875" />
       </map>
     </option>

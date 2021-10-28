@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +28,9 @@ public class UserProfileActivity extends AppCompatActivity {
     TextView textView_firstLetter,textView_username,textView_mailId,textView_mobileNumber,
             textView_address,textView_unique_id,textView_status;
     DatabaseReference databaseReference;
-    RelativeLayout relativeLayoutActivate,relativeLayoutDelete,relativeLayout_arrow;
+    RelativeLayout relativeLayoutActivate,relativeLayoutDelete,relativeLayout_arrow,relativeLayoutAdd;
     String userStatus, User_MobileNumber,username;
+    private EditText editTextEmpID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +87,29 @@ public class UserProfileActivity extends AppCompatActivity {
         relativeLayoutActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activateStatus()){
-                    Toast.makeText(getApplicationContext(), "Update user status on Activate",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+                View popupView = LayoutInflater.from(UserProfileActivity.this).inflate(
+                        R.layout.layout_card_employee_number, null);
+                final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
+                        LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                popupWindow.setFocusable(true);
+                popupWindow.update();
+                editTextEmpID = popupView.findViewById(R.id.editTextEmpID);
+                relativeLayoutAdd = popupView.findViewById(R.id.relativeLayoutAdd);
+                relativeLayoutAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String addEmpID = editTextEmpID.getText().toString();
+                        databaseReference.child(User_MobileNumber)
+                                .child("uniqueID").setValue(addEmpID);
+                        if(activateStatus()){
+                            Toast.makeText(getApplicationContext(), "Update user status on Activate",
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        popupWindow.dismiss();
+                    }
+                });
             }
         });
 

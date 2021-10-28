@@ -42,6 +42,18 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_userProfile"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="Site Location"
+        android:textColor="@color/logo_color"
+        android:textSize="15sp" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout_content"
         android:layout_width="match_parent"
@@ -225,41 +237,77 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="45dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unique ID"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins_bold"/>
+                android:layout_marginBottom="25dp">
 
-                <TextView
-                    android:id="@+id/textView_unique_id"
+                <LinearLayout
+                    android:id="@+id/linearLayout_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="XXXX XXX XXXXX XXX" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/color_grey_lite"/>
+                    android:layout_marginEnd="45dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check In"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:id="@+id/textView_checkIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_grey_lite"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check Out"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:id="@+id/textView_checkOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_grey_lite"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-
 
     </RelativeLayout>
 

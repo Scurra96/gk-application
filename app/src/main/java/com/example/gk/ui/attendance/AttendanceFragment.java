@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -63,9 +64,10 @@ public class AttendanceFragment extends Fragment {
     private AttendanceFragment.LocationAddressResultReceiver addressResultReceiver;
     private Location currentLocation;
     private LocationCallback locationCallback;
-    String usernameValue,checkIn,checkOut,mobileNo;
-    private String formatDate,checkInTime,checkOutTime;
-    DatabaseReference databaseReference,databaseReference1;
+    String usernameValue,checkIn,checkOut="In Work",mobileNo;
+    private String formatDate,checkInTime,checkOutTime,formatDate_time;
+    DatabaseReference databaseReference;
+    SharedPreferences pref;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,41 +79,16 @@ public class AttendanceFragment extends Fragment {
         relative_checkOut = root.findViewById(R.id.relative_checkOut);
         text_checkIn = root.findViewById(R.id.text_checkIn);
         text_daily = root.findViewById(R.id.text_daily);
-//        databaseReference = FirebaseDatabase.getInstance().getReference().child("SiteLocation");
-        databaseReference1= FirebaseDatabase.getInstance().getReference("SiteLocation");
-        SharedPreferences pref = requireActivity().getSharedPreferences(
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        pref = requireActivity().getSharedPreferences(
                 "MyPref", MODE_PRIVATE);
         username = pref.getString("user_UserName","");
         mobileNo = pref.getString("user_MobileNumber","");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, kk:mm aa",
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss aa",
                 Locale.getDefault());
-
-        SimpleDateFormat timeFormat = new SimpleDateFormat("kk:mm aa",
-                Locale.getDefault());
-        SimpleDateFormat timeFormat_out = new SimpleDateFormat("kk:mm aa",
-                Locale.getDefault());
-
-        SimpleDateFormat dateFormat1= new SimpleDateFormat("ddMMMyyyy",
-                Locale.getDefault());
-        String formatDate_time = dateFormat.format(new Date());
-        formatDate = dateFormat1.format(new Date());
-        checkInTime = timeFormat.format(new Date());
-        checkOutTime = timeFormat_out.format(new Date());
-        text_date_and_time.setText(formatDate_time);
-
-       /* databaseReference1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                usernameValue = snapshot.child(username).child("username").getValue(String.class);
-                Log.d("ASAP",""+usernameValue);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
+       String DateAndTIme = dateFormat2.format(new Date());
+        text_date_and_time.setText(DateAndTIme);
 
         if(!pref.getBoolean("checkIn_status",false)){
                           relative_checkOut.setVisibility(View.GONE);
@@ -201,9 +178,15 @@ public class AttendanceFragment extends Fragment {
         relative_checkOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference = FirebaseDatabase.getInstance()
-                        .getReference("SiteLocation/"+mobileNo);
-                databaseReference.child("checkOut").setValue(checkOutTime);
+                SimpleDateFormat timeFormat_out = new SimpleDateFormat("hh:mm aa",
+                        Locale.getDefault());
+                checkOutTime = timeFormat_out.format(new Date());
+                databaseReference.child("SiteLocation")
+                        .child(pref.getString("user_checkIn_time",dateAndTime))
+                        .child("checkOut").setValue(checkOutTime);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("checkIn_status", false);
+                editor.apply();
                 relative_checkOut.setVisibility(View.GONE);
                 relative_checkIn.setVisibility(View.VISIBLE);
             }
@@ -286,8 +269,22 @@ public class AttendanceFragment extends Fragment {
     }
 
     private void addUserDataYes() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss aa",
+                Locale.getDefault());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm aa",
+                Locale.getDefault());
 
+
+        SimpleDateFormat dateFormat1= new SimpleDateFormat("dd MMM yyyy",
+                Locale.getDefault());
+        formatDate = dateFormat1.format(new Date());
+        checkInTime = timeFormat.format(new Date());
+
+        formatDate_time = dateFormat.format(new Date());
         dateAndTime = text_date_and_time.getText().toString();
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("user_checkIn_time" , formatDate_time);
+        editor.apply();
         if(editText_siteName.getText().toString().isEmpty()){
             siteName = "Office";
         }
@@ -295,8 +292,8 @@ public class AttendanceFragment extends Fragment {
             siteName = editText_siteName.getText().toString();
         }
         SiteLocationModel siteLocationModel = new SiteLocationModel(username,formatDate,siteName,
-                currentAddress,checkInTime,"checkOut",mobileNo);
-        databaseReference1.child(mobileNo).setValue(siteLocationModel);
+                currentAddress,checkInTime,checkOut,mobileNo);
+        databaseReference.child("SiteLocation").child(formatDate_time).setValue(siteLocationModel);
         View popupView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.layout_confirm, null);
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
@@ -307,7 +304,7 @@ public class AttendanceFragment extends Fragment {
 
         relativeLayout_Okay = popupView.findViewById(R.id.relativeLayout_Okay);
         textView_confirm = popupView.findViewById(R.id.textView_confirm);
-        textView_confirm.setText("Hi,"+username+"your check in Successfully, visit site location");
+        textView_confirm.setText("Hi,"+username+" your check in Successfully, visit site location");
         relativeLayout_Okay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
