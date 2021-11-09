@@ -87,7 +87,17 @@ public class RegisterActivity extends AppCompatActivity {
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addRegisterData();
+                if(editText_username.getText().toString().equals("") ||
+                        editText_dob.getText().toString().equals("") ||
+                        editText_mailID.getText().toString().equals("") ||
+                        editText_mobileNumber.getText().toString().equals("") ||
+                        editText_Address.getText().toString().equals("") ||
+                        editText_password.getText().toString().equals("")){
+                    Toast.makeText(RegisterActivity.this, "Enter All Fields", Toast.LENGTH_SHORT).show();
+                }else{
+                    addRegisterData();
+                }
+
             }
         });
 

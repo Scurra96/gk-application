@@ -99,15 +99,21 @@ public class UserProfileActivity extends AppCompatActivity {
                 relativeLayoutAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String addEmpID = editTextEmpID.getText().toString();
-                        databaseReference.child(User_MobileNumber)
-                                .child("uniqueID").setValue(addEmpID);
-                        if(activateStatus()){
-                            Toast.makeText(getApplicationContext(), "Update user status on Activate",
+                        if(editTextEmpID.getText().toString().equals("")){
+                            Toast.makeText(getApplicationContext(), "Please Add Employee ID",
                                     Toast.LENGTH_SHORT).show();
-                            finish();
                         }
-                        popupWindow.dismiss();
+                        else{
+                            String addEmpID = editTextEmpID.getText().toString();
+                            databaseReference.child(User_MobileNumber)
+                                    .child("uniqueID").setValue(addEmpID);
+                            if(activateStatus()){
+                                Toast.makeText(getApplicationContext(), "Update user status on Activate",
+                                        Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                            popupWindow.dismiss();
+                        }
                     }
                 });
             }

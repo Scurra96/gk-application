@@ -273,8 +273,6 @@ public class AttendanceFragment extends Fragment {
                 Locale.getDefault());
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm aa",
                 Locale.getDefault());
-
-
         SimpleDateFormat dateFormat1= new SimpleDateFormat("dd MMM yyyy",
                 Locale.getDefault());
         formatDate = dateFormat1.format(new Date());

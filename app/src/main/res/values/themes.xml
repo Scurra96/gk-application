@@ -32,6 +32,17 @@
         </item>
     </style>
 
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/logo_color</item>
+
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/color_black</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/color_white</item>
+        <!--<item name="android:windowTitleStyle">@style/MyTitleTextStyle</item>-->
+    </style>
+
     <style name="MyOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">#FFFFFF</item>
     </style>

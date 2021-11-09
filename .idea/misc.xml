@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.2853717026378897" />
+        <entry key="app/src/main/res/drawable-v24/circle_status_inactive.xml" value="0.253125" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_arrow_back_red.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable-v24/rectangle_white_one_side_corner.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/circle_round.xml" value="0.253125" />
         <entry key="app/src/main/res/drawable/circle_round_white.xml" value="0.2630208333333333" />
+        <entry key="app/src/main/res/drawable/circle_status_active.xml" value="0.253125" />
         <entry key="app/src/main/res/drawable/custom_thumb.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/custom_track.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/rectangle_radius_corner_black_bg.xml" value="0.2546875" />
@@ -37,7 +40,7 @@
         <entry key="app/src/main/res/layout/layout_card_employee_number.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/layout_card_list_of_site.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/layout_card_site_location.xml" value="0.20501076155024123" />
-        <entry key="app/src/main/res/layout/layout_card_user_profile.xml" value="0.2484577387849521" />
+        <entry key="app/src/main/res/layout/layout_card_user_profile.xml" value="0.40136887662304066" />
         <entry key="app/src/main/res/layout/layout_confirm.xml" value="0.2858566714657073" />
         <entry key="app/src/main/res/layout/layout_site_location.xml" value="0.26844767556592203" />
         <entry key="app/src/main/res/layout/layout_switch.xml" value="0.525997549675266" />

@@ -2,10 +2,12 @@ package com.example.gk.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,6 +46,13 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         RegisterModel registeredModel = registeredModels.get(position);
         holder.textView_username.setText(registeredModel.getUsername());
         holder.textView_unique_id.setText(registeredModel.getUniqueID());
+        if(registeredModel.getStatus().equalsIgnoreCase("Active")){
+            holder.textView_active_inactive_status.setText(registeredModel.getStatus());
+            holder.imageView_statusActiveColor.setVisibility(View.VISIBLE);
+            holder.imageView_statusInactiveColor.setVisibility(View.GONE);
+        }else{
+            holder.textView_active_inactive_status.setText(registeredModel.getStatus());
+        }
         char result = registeredModel.getUsername().charAt(0);
         holder.textView_firstLetter.setText(String.valueOf(result)
                 .toUpperCase(Locale.ROOT));
@@ -68,13 +77,18 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView_firstLetter,textView_username,textView_unique_id;
+        TextView textView_firstLetter,textView_username,textView_unique_id,
+                textView_active_inactive_status;
         RelativeLayout relativeLayout_userProfile;
+        ImageView imageView_statusInactiveColor,imageView_statusActiveColor;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_firstLetter = itemView.findViewById(R.id.textView_firstLetter);
             textView_username = itemView.findViewById(R.id.textView_username);
             textView_unique_id = itemView.findViewById(R.id.textView_unique_id);
+            imageView_statusInactiveColor = itemView.findViewById(R.id.imageView_statusInactiveColor);
+            imageView_statusActiveColor = itemView.findViewById(R.id.imageView_statusActiveColor);
+            textView_active_inactive_status = itemView.findViewById(R.id.textView_active_inactive_status);
             relativeLayout_userProfile = itemView.findViewById(R.id.relativeLayout_userProfile);
         }
     }
