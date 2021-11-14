@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.TodaySiteLocationActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_currentDate"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/logo_color">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/circle_round_white">
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_baseline_arrow_back_red"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:layout_toEndOf="@+id/relativeLayout_arrow"
+            android:textColor="@color/white"
+            android:text="Today Date"/>
+
+        <TextView
+            android:id="@+id/textViewCurrentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:text="Current Date"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_extra_bold"/>
+
+    </RelativeLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCurrentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/toolbar_currentDate"/>
+
+</RelativeLayout>

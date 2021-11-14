@@ -119,8 +119,6 @@ public class AdminHomeActivity extends AppCompatActivity {
                         SiteLocationModel siteModel = dataSnapshot.getValue(SiteLocationModel.class);
                         siteLocationModels.add(siteModel);
                     }
-                    Log.d("String1234",siteLocationModels.toString());
-
                     listOfSitesAdapter = new ListOfSitesAdapter(getApplicationContext(),siteLocationModels);
                     recyclerView_siteOfList.setAdapter(listOfSitesAdapter);
                 }
@@ -152,17 +150,19 @@ public class AdminHomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menuTodaySite:
+                Intent todaySite = new Intent(getApplicationContext(),TodaySiteLocationActivity.class);
+                startActivity(todaySite);
+                break;
             case R.id.menuLogout:
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.apply();
                 editor.clear();
-                finish();
                 startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+                finish();
+                break;
             }
-
-        }
+        return false;
+    }
 }

@@ -74,7 +74,6 @@ public class UserProfileActivity extends AppCompatActivity {
                         char result = textView_username.toString().charAt(0);
                         textView_firstLetter.setText(String.valueOf(result).toUpperCase(Locale.ROOT));
                     }
-
                 }
             }
 
@@ -87,35 +86,41 @@ public class UserProfileActivity extends AppCompatActivity {
         relativeLayoutActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View popupView = LayoutInflater.from(UserProfileActivity.this).inflate(
-                        R.layout.layout_card_employee_number, null);
-                final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
-                        LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-                popupWindow.setFocusable(true);
-                popupWindow.update();
-                editTextEmpID = popupView.findViewById(R.id.editTextEmpID);
-                relativeLayoutAdd = popupView.findViewById(R.id.relativeLayoutAdd);
-                relativeLayoutAdd.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(editTextEmpID.getText().toString().equals("")){
-                            Toast.makeText(getApplicationContext(), "Please Add Employee ID",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            String addEmpID = editTextEmpID.getText().toString();
-                            databaseReference.child(User_MobileNumber)
-                                    .child("uniqueID").setValue(addEmpID);
-                            if(activateStatus()){
-                                Toast.makeText(getApplicationContext(), "Update user status on Activate",
+                if(userStatus.equalsIgnoreCase("Active")){
+                    relativeLayoutActivate.setEnabled(false);
+                    Toast.makeText(getApplicationContext(), "Already Active Account", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    View popupView = LayoutInflater.from(UserProfileActivity.this).inflate(
+                            R.layout.layout_card_employee_number, null);
+                    final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.
+                            LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                    popupWindow.setFocusable(true);
+                    popupWindow.update();
+                    editTextEmpID = popupView.findViewById(R.id.editTextEmpID);
+                    relativeLayoutAdd = popupView.findViewById(R.id.relativeLayoutAdd);
+                    relativeLayoutAdd.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(editTextEmpID.getText().toString().equals("")){
+                                Toast.makeText(getApplicationContext(), "Please Add Employee ID",
                                         Toast.LENGTH_SHORT).show();
-                                finish();
                             }
-                            popupWindow.dismiss();
+                            else{
+                                String addEmpID = editTextEmpID.getText().toString();
+                                databaseReference.child(User_MobileNumber)
+                                        .child("uniqueID").setValue(addEmpID);
+                                if(activateStatus()){
+                                    Toast.makeText(getApplicationContext(), "Update user status on Activate",
+                                            Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                popupWindow.dismiss();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
